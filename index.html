@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<style type="text/css">
+
+		canvas {
+			position: fixed;
+			top: 15%;
+
+/*			width: 50% !important;
+			height: 50% !important;;*/
+/*			background-color: transparent;
+			background: transparent;*/
+		}
+		/*		.backgroundImage {
+			height: 2014px !important;
+			width: 5238px !important;
+			position: fixed;
+			top: -300px;
+			left: -300px;
+			width: 100%;
+			height: 100%;
+			background: url(assets/background.png) no-repeat center center fixed; 
+			-webkit-background-size: cover;
+			-moz-background-size: cover;
+			-o-background-size: cover;
+			background-size: cover;
+			opacity: 0.3;
+		}
+
+		.bgI1 {
+!*			height: 2014px;
+			width: 5238px;*!
+			top: -300px;
+			left: -300px;
+			animation-name: animateClouds;
+			animation-duration: 20s;
+			animation-iteration-count: infinite;
+		}
+		.bgI2 {
+!*			height: 2014px;
+			width: 5238px;*!
+			top: -300px;
+			left: -300px;
+			animation-name: animateClouds;
+			animation-duration: 10s;
+			animation-iteration-count: infinite;
+		}
+		.bgI3 {
+!*			height: 2014px;
+			width: 5238px;*!
+			top: -300px;
+			left: -300px;
+			animation-name: animateClouds;
+			animation-duration: 40s;
+			animation-iteration-count: infinite;
+		}
+		.bgI4 {
+!*			height: 2014px;
+			width: 5238px;*!
+			top: -300px;
+			left: -300px;
+			animation-name: animateClouds;
+			animation-duration: 100s;
+			animation-iteration-count: infinite;
+		}*/
+
+/*
+		@keyframes animateClouds {
+			0%   {
+				-ms-transform: translate(0px, 0px); !* IE 9 *!
+				-webkit-transform: translate(0px, 0px); !* Safari *!
+				transform: translate(0px, 0px);
+			}
+
+			50%  {
+				-ms-transform: translate(-50px, -100px); !* IE 9 *!
+				-webkit-transform: translate(-50px, -100px); !* Safari *!
+				transform: translate(-50px, -100px);
+			}
+
+			100%  {
+				-ms-transform: translate(0px, 0px); !* IE 9 *!
+				-webkit-transform: translate(0px, 0px); !* Safari *!
+				transform: translate(0px, 0px);
+			}
+		}
+*/
+
+		.bg {
+
+			width: 100%;
+			height: 100%;
+			background-color: #eed2b5;
+			position: fixed;
+		}
+
+		.canvas {
+			height: 100%;
+		}
+
+		.borderTop {
+			position: fixed;
+			background-color: #000;
+			width: 100%;
+			height: 15%;
+		}
+
+		.borderBottom {
+			position: fixed;
+			background-color: #000;
+			width: 100%;
+			height: 15%;
+			bottom: 0px;
+		}
+
+		.screentext {
+		    position: fixed;
+		    top: 29%;
+		    font-size: 30px;
+		    left: 100px ;
+		    text-align: center;;
+		}
+
+	</style>
+</head>
+<body>
+
+	<!-- HTML AND CSS part -->
+<!--	<div class="bg"></div>
+	<img class="backgroundImage bgI1">
+	<img class="backgroundImage bgI2">
+	<img class="backgroundImagen bgI3">
+	<img class="backgroundImage bgI4">-->
+
+	<canvas id="rayScene"></canvas>
+
+	<!-- JS actiontime part-->
+	<script id="fragment_shader" type="x-shader/x-fragment">
+		uniform float sound;
+		varying vec2 vUv;
+		void main( void ) {
+			vec2 position = - 1.0 + 2.0 * vUv;
+			float red = 5.0;
+			float green = 101.0;
+			float blue = 101.0;
+			
+			gl_FragColor = vec4( red, green, blue, 1.0 );
+		}
+	</script>
+
+	<script id="vertexShader" type="x-shader/x-vertex">
+		varying vec2 vUv;
+		void main()
+		{
+			vUv = uv;
+			vec4 mvPosition = modelViewMatrix * vec4( position, 1.0 );
+			gl_Position = projectionMatrix * mvPosition;
+		}
+	</script>
+
+	<script src="threeJS/three.min.js"></script>
+	<!-- <script src="twgl.min.js"></script> -->
+	<script src="threeJS/SubdivisionModifier.js"></script>
+
+	<script src="objects/Cube.js"></script>
+
+
+	<script src="scenes/SceneLoading.js"></script>
+	<script src="scenes/QtoCubePulse.js"></script>
+	<script src="scenes/SceneCubeInCube.js"></script>
+	<script src="scenes/ray.js"></script>
+	<script src="scenes/mainScene.js"></script>
+
+	<div class="screentext" id="screentextHTML"> LOADING Qb</div>
+	<div class="borderTop"></div>
+	<div class="borderBottom"></div>
+	
+
+</body>
+</html>
